@@ -14,10 +14,27 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+
+// What different components URL paths will open
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   // Defines components which are part of the app module
-  declarations: [AppComponent, UserRegistrationFormComponent, UserLoginFormComponent],
+  declarations: [
+    AppComponent,
+    UserRegistrationFormComponent,
+    UserLoginFormComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+  ],
   imports: [
     BrowserModule, // Provides services that are essential to launch and run a browser app
     AppRoutingModule, // Handles the routing configuration for the app
@@ -30,6 +47,8 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatDialogModule, // Material Design dialog module
     MatSnackBarModule, // Material Design snack bar module
     FormsModule, // Module for two-way data binding with forms in Angular
+    RouterModule.forRoot(appRoutes),
+    MatIconModule,
   ],
   // Services that can be injected into components or other services
   providers: [],
