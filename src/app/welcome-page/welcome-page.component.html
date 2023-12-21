@@ -1,23 +1,25 @@
 <div class="main-page">
-  <div class="loginSignUp">
-    <h1>Welcome to myFlix!</h1>
-    <div class="welcomeButtons">
-      <button
-        mat-raised-button
-        (click)="openUserRegistrationDialog()"
-        style="margin-right: 10px"
-        color="primary"
-      >
-        Sign Up
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="openUserLoginDialog()"
-        style="margin-right: 10px"
-      >
-        Login
-      </button>
+  <div class="welcomeContainer">
+    <h1>Welcome to myBondFlix!</h1>
+    <div class="loginSignUp">
+      <div class="welcomeButtons">
+        <button
+          mat-raised-button
+          (click)="openUserRegistrationDialog()"
+          style="margin-right: 10px"
+          color="primary"
+        >
+          Sign Up
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openUserLoginDialog()"
+          style="margin-right: 10px"
+        >
+          Login
+        </button>
+      </div>
     </div>
   </div>
 </div>
