@@ -9,6 +9,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+// Router module to handle routing
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -22,7 +25,8 @@ export class UserLoginFormComponent {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) {}
 
   // Will run when component first intialises
@@ -34,7 +38,7 @@ export class UserLoginFormComponent {
       (response) => {
         console.log(response);
         // Takes the response from the endpoint and stores user and token in the browsers local storage
-        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('user', JSON.stringify(response.user.Username));
         localStorage.setItem('token', response.token);
         // Closes the login window
         this.dialogRef.close();
@@ -42,6 +46,7 @@ export class UserLoginFormComponent {
         this.snackBar.open('User login successful', 'Ok', {
           duration: 2000,
         });
+        this.router.navigate(['movies']);
       },
       (response) => {
         console.log(response);
