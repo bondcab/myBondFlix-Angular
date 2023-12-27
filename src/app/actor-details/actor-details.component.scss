@@ -1,0 +1,65 @@
+.detailsImage {
+  width: 100%;
+  height: auto;
+}
+
+.detailsHeaderContainer {
+  //   border: solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  flex-direction: column;
+}
+
+.detailsComponent {
+  width: 600px;
+  height: auto;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .detailsComponent {
+    width: 400px;
+    height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .detailsComponent {
+    width: 380px;
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .detailsComponent {
+    width: 370px;
+    height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .detailsComponent {
+    width: 270px;
+    height: auto;
+  }
+}
+
+.detailsTitle {
+  //   border: solid blue;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.detailsPlot {
+  padding-top: 50px;
+  //   margin-bottom: 100px;
+}
+
+.detailsActions {
+  //   border: solid red;
+  width: 180px;
+  align-self: center;
+}
