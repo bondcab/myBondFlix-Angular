@@ -1,0 +1,20 @@
+.loginComponent {
+  display: flex;
+  border: solid red;
+  justify-content: center;
+}
+
+.loginButton {
+  width: 50px;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
