@@ -1,9 +1,6 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Sign Up!</mat-card-title>
-  </mat-card-header>
   <mat-card-content>
-    <form>
+    <form class="formContainer">
       <mat-form-field>
         <input
           matInput
@@ -37,7 +34,7 @@
       <mat-form-field>
         <input
           matInput
-          [(ngModel)]="userData.Birthday"
+          [(ngModel)]="userData.DOB"
           type="date"
           placeholder="Birthday"
           name="Birthday"
@@ -45,8 +42,14 @@
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="registerUser()" color="primary">
+  <mat-card-actions class="buttonContainer">
+    <button
+      mat-raised-button
+      (click)="registerUser()"
+      color="primary"
+      [ngStyle]="{ 'background-color': '#2B2B2B', color: 'white' }"
+      class="loginButton"
+    >
       Sign Up
     </button>
   </mat-card-actions>

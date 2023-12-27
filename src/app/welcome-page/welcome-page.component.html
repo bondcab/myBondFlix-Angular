@@ -8,14 +8,16 @@
           (click)="openUserRegistrationDialog()"
           style="margin-right: 10px"
           color="primary"
+          [ngStyle]="{ 'background-color': '#2B2B2B', color: 'white' }"
         >
           Sign Up
         </button>
         <button
           mat-raised-button
-          color="primary"
           (click)="openUserLoginDialog()"
           style="margin-right: 10px"
+          color="blue"
+          [ngStyle]="{ 'background-color': '#2B2B2B', color: 'white' }"
         >
           Login
         </button>

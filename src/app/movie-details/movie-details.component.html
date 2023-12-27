@@ -1,0 +1,49 @@
+<div style="display: flex" class="detailsComponent">
+  <mat-card>
+    <mat-card-header class="detailsHeaderContainer">
+      <mat-card-title class="detailsTitle">{{
+        movieDetails.Title
+      }}</mat-card-title>
+    </mat-card-header>
+    <img src="{{ movieDetails.Image }}" class="detailsImage" />
+    <mat-card-content class="detailsPlot">{{
+      movieDetails.Plot
+    }}</mat-card-content>
+    <mat-card-actions class="detailsActions">
+      <button
+        mat-button
+        color="primary"
+        (click)="getActor(movieDetails)"
+        [ngStyle]="{ 'background-color': '#2B2B2B', color: 'white' }"
+        class="actorButton"
+      >
+        Actor
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="getDirector(movieDetails)"
+        [ngStyle]="{ 'background-color': '#2B2B2B', color: 'white' }"
+        class="directorButton"
+      >
+        Director
+      </button>
+
+      <div class="iconContainer">
+        <mat-icon
+          *ngIf="isFavourited(movieDetails) === true"
+          (click)="removeFavourite(movieDetails)"
+          class="icon"
+          >favorite</mat-icon
+        >
+        <mat-icon
+          *ngIf="isFavourited(movieDetails) === false"
+          (click)="favouriteMovie(movieDetails)"
+          class="icon"
+          [ngStyle]="{ color: '#2B2B2B' }"
+          >favorite_border</mat-icon
+        >
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

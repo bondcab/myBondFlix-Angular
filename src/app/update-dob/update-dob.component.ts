@@ -13,37 +13,55 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-login-form',
-  templateUrl: './user-login-form.component.html',
-  styleUrls: ['./user-login-form.component.scss'],
+  selector: 'app-update-dob',
+  templateUrl: './update-dob.component.html',
+  styleUrls: ['./update-dob.component.scss'],
 })
-export class UserLoginFormComponent {
+export class UpdateDobComponent {
   // @Input defines the components inputs
-  @Input() userData = { Username: '', Password: '' };
+  @Input() dob = { date: new Date('') };
+
+  // userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   // Method which injects instances of services or other dependecies into the component when its created
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialogRef: MatDialogRef<UserLoginFormComponent>,
+    public dialogRef: MatDialogRef<UpdateDobComponent>,
     public snackBar: MatSnackBar,
     public router: Router
   ) {}
 
   // Fuction will send forms inputs to the backend
-  loginUser(): void {
-    this.fetchApiData.userLogin(this.userData).subscribe(
+  updateDOB(): void {
+    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('Password: ', storedUser.Password);
+
+    console.log('matching');
+    let usernameUpdate: {
+      Username: string;
+      Password: string;
+      Email: string;
+      DOB: Date;
+    } = {
+      Username: storedUser.Username,
+      Password: storedUser.Password,
+      Email: storedUser.Email,
+      DOB: this.dob.date,
+    };
+    console.log('Username update object', usernameUpdate);
+
+    this.fetchApiData.userDOBUpdate(usernameUpdate).subscribe(
       (response) => {
-        console.log('DOB Change Response ', response);
+        console.log(response);
         // Takes the response from the endpoint and stores user and token in the browsers local storage
-        localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('user', JSON.stringify(response));
         // Closes the login window
         this.dialogRef.close();
         // Brings up messages saying if login was successfu;
-        this.snackBar.open('User login successful', 'Ok', {
+        this.snackBar.open('Date of birth updated', 'Ok', {
           duration: 2000,
         });
-        this.router.navigate(['movies']);
+        this.router.navigate(['profile']);
       },
       (response) => {
         console.log(response);

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="updateUsernameForm">
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="dob.date"
+          placeholder="New Username"
+          type="date"
+          name="DOB"
+          required
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="updateUsernameForm">
+    <button mat-raised-button (click)="updateDOB()" color="primary">
+      Confirm
+    </button>
+  </mat-card-actions>
+</mat-card>
