@@ -29,16 +29,13 @@ export class UserLoginFormComponent {
     public router: Router
   ) {}
 
-  // Will run when component first intialises
-  ngOnInit(): void {}
-
   // Fuction will send forms inputs to the backend
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (response) => {
-        console.log(response);
+        console.log('DOB Change Response ', response);
         // Takes the response from the endpoint and stores user and token in the browsers local storage
-        localStorage.setItem('user', JSON.stringify(response.user.Username));
+        localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
         // Closes the login window
         this.dialogRef.close();
