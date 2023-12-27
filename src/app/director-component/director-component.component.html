@@ -1,0 +1,14 @@
+<div style="display: flex" class="detailsComponent">
+  <mat-card>
+    <mat-card-header class="detailsHeaderContainer">
+      <mat-card-title class="detailsTitle">{{
+        directorDetails.directorName
+      }}</mat-card-title>
+    </mat-card-header>
+    <img src="{{ directorDetails.directorImage }}" class="detailsImage" />
+    <mat-card-content class="detailsPlot">{{
+      directorDetails.directorBio
+    }}</mat-card-content>
+    <mat-card-actions class="detailsActions"> </mat-card-actions>
+  </mat-card>
+</div>
