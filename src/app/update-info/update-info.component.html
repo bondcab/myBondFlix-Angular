@@ -1,0 +1,47 @@
+<div class="navBar">
+  <button mat-button class="navBarLinks" (click)="openHomePage()">Home</button>
+  <button mat-button class="navBarLinks profileOpenButton">Profile</button>
+</div>
+<div class="accountInfoContainer">
+  <div class="accountInfo">
+    <div class="accountDetails">
+      <h2>Account Information</h2>
+      <p>Username: {{ user?.Username }}</p>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="openUpdateUsernameDialog()"
+      >
+        Change Username
+      </button>
+      <p>Email: {{ user?.Email }}</p>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="openUpdateEmailDialog()"
+      >
+        Change Email
+      </button>
+      <p>Birthday: {{ user?.DOB }}</p>
+      <button mat-raised-button color="primary" (click)="openUpdateDOBDialog()">
+        Change Date Of Birth
+      </button>
+    </div>
+
+    <div class="infoContainer">
+      <div class="accountInfoButtonsContainer">
+        <h2 class="textHidden">Account Information</h2>
+        <button
+          mat-button
+          class="updateInfoCancel"
+          (click)="cancelInfoUpdate()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="favouritesContainer">
+  <h2>Favourites</h2>
+</div>
