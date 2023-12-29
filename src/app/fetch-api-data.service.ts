@@ -19,6 +19,12 @@ export class FetchApiDataService {
   // Typescript class constructor. Can't be accessed outside the class. Provides HttpClient to entire class
   constructor(private http: HttpClient) {}
 
+  /**
+   * Method to register user
+   * @param userDetails
+   * @returns post request sent to the endpoint for registering user along with user details provided in form component
+   * @throws error
+   */
   public userRegistration(userDetails: any): Observable<any> {
     // Console logs the users details
     console.log(userDetails);
@@ -29,14 +35,22 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // User login endpoint
+  /**
+   * Method to register user
+   * @param userDetails
+   * @returns post request sent to the endpoint for logging user in along with user details provided in form component
+   */
   userLogin(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'login?', userDetails)
       .pipe(catchError(this.handleError));
   }
 
-  // Unregister user endpoint
+  /**
+   * Method to delete user
+   * @returns Delete request sent to the endpoint for logging user in along with username and JWT token extracted from local storage
+   * @throws error
+   */
   userDelete(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -51,7 +65,12 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // Update username endpoint
+  /**
+   * Method to update users username
+   * @param userDetails
+   * @returns Put request sent to the endpoint for logging user in along with username and JWT token extracted from local storage
+   * @throws error
+   */
   usernameUpdate(userDetails: any): Observable<any> {
     // Gets user object from local storage
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -69,7 +88,12 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // Update username endpoint
+  /**
+   * Method to update users email
+   * @param userDetails
+   * @returns Put request sent to the endpoint for logging user in along with username and JWT token extracted from local storage
+   * @throws error
+   */
   emailUpdate(userDetails: any): Observable<any> {
     // Gets user object from local storage
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -87,7 +111,12 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // Update username endpoint
+  /**
+   * Method to update users date of birth
+   * @param userDetails
+   * @returns Put request sent to the endpoint for logging user in along with username and JWT token extracted from local storage
+   * @throws error
+   */
   userDOBUpdate(userDetails: any): Observable<any> {
     // Gets user object from local storage
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -106,7 +135,11 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // Get data for all movies endpoint
+  /**
+   * Method to retriieve all movies from database
+   * @returns Get request sent to the endpoint for getting all movies along with JWT token extracted from local storage
+   * @throws error
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -118,16 +151,16 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Adding favourite movie endpoint
+  /**
+   * Method to retrieve information on a single movie from database
+   * @param movieID
+   * @returns Get request sent to the endpoint for getting a single movie along with JWT token extracted from local storage
+   * @throws error
+   */
   addFavourite(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     console.log(movieID + ' added to favourites');
-    // console.log(
-    //   'URL Endpoint: ',
-    //   apiUrl + 'users/' + user.Username + '/movies/' + movieID
-    // );
-    // console.log('Token: ', token);
     user.FavouriteFilms.push(movieID);
     localStorage.setItem('user', JSON.stringify(user));
 
@@ -144,7 +177,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Remove favourite movie point
+  /**
+   * Method to remove a single movie from users favourites array
+   * @param movieID
+   * @returns Delete request sent to the endpoint for deleting movie from favourites array along with JWT token extracted from local storage
+   * @throws error
+   */
   removeFavourite(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -164,7 +202,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get data on one movie endpoint
+  /**
+   * Method to get information on a single movie
+   * @param title
+   * @returns Get request sent to the endpoint for getting information on single movie along with JWT token extracted from local storage
+   * @throws error
+   */
   getMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -176,7 +219,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get data on one director endpoint
+  /**
+   * Method to get information on a director
+   * @param directorName
+   * @returns Get request sent to the endpoint for getting information director along with JWT token extracted from local storage
+   * @throws error
+   */
   getDirector(directorName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -188,7 +236,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get data on actor endpoint
+  /**
+   * Method to get information on an actor
+   * @param actorName
+   * @returns Get request sent to the endpoint for getting information on an actor along with JWT token extracted from local storage
+   * @throws error
+   */
   getActor(actorName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
