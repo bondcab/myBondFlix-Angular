@@ -32,12 +32,18 @@ export class UpdateUsernameComponent {
     public router: Router
   ) {}
 
-  // Fuction will send forms inputs to the backend
+  /**
+   * Sends updated username to the update user information endpoint
+   * @params usernameUpdate
+   * @returns Console logs endpoint response
+   * @returns Updates local storage user with endpoint response
+   * @returns Closes the login form dialog
+   * @returns Shows a message of success
+   * @returns Navigates to the profile page
+   */
   updateUsername(): void {
     const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-    console.log('Password: ', storedUser.Password);
     if (this.username.Username === this.confirmUsername.ConfirmUsername) {
-      console.log('matching');
       let usernameUpdate: {
         Username: string;
         Password: string;
@@ -58,7 +64,7 @@ export class UpdateUsernameComponent {
           localStorage.setItem('user', JSON.stringify(response));
           // Closes the login window
           this.dialogRef.close();
-          // Brings up messages saying if login was successfu;
+          // Brings up messages saying if login was successful;
           this.snackBar.open('Username updated', 'Ok', {
             duration: 2000,
           });
