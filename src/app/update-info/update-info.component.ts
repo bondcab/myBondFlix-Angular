@@ -35,11 +35,16 @@ export class UpdateInfoComponent {
     }
   }
 
-  // Function to open the profile page
+  /**
+   * @returns navigates to home page
+   */
   openHomePage(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * @returns Opens update username component form
+   */
   openUpdateUsernameDialog(): void {
     this.dialog.open(UpdateUsernameComponent, {
       // Assigning the dialog width
@@ -47,6 +52,9 @@ export class UpdateInfoComponent {
     });
   }
 
+  /**
+   * @returns Opens update date of birth component form
+   */
   openUpdateDOBDialog(): void {
     this.dialog.open(UpdateDobComponent, {
       // Assigning the dialog width
@@ -54,6 +62,9 @@ export class UpdateInfoComponent {
     });
   }
 
+  /**
+   * @returns Opens update email component form
+   */
   openUpdateEmailDialog(): void {
     this.dialog.open(UpdateEmailComponent, {
       // Assigning the dialog width
@@ -61,6 +72,9 @@ export class UpdateInfoComponent {
     });
   }
 
+  /**
+   * @returns Navigates back to the profile page
+   */
   cancelInfoUpdate(): void {
     this.router.navigate(['profile']);
   }
