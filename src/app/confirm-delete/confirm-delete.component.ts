@@ -24,11 +24,16 @@ export class ConfirmDeleteComponent {
     public snackBar: MatSnackBar
   ) {}
 
+  /**
+   * @returns Closes delete account dialog
+   */
   cancelDeleteAccount(): void {
     this.dialogRef.close();
   }
 
-  // Fuction will delete user
+  /**
+   * @returns Calls the userDelete function
+   */
   deleteUser(): void {
     this.fetchApiData.userDelete().subscribe((response) => {
       console.log(response);
