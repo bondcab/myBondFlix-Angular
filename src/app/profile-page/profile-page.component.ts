@@ -42,15 +42,23 @@ export class ProfilePageComponent implements OnInit {
     this.getMovies();
   }
 
-  // Function to open the profile page
+  /**
+   * @returns Navigates to homepage
+   */
   openHomePage(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * @returns Navigates to update information page
+   */
   openUpdateInfoPage(): void {
     this.router.navigate(['updateinfo']);
   }
 
+  /**
+   * @returns Opens dialog asking user to confirm deleting their account
+   */
   openConfirmDeleteDialog(): void {
     this.dialog.open(ConfirmDeleteComponent, {
       // Assigning the dialog width
@@ -58,7 +66,10 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-  // Function uses the injected fetchApiData service to make an API call to the movies endpoint
+  /**
+   * @returns Calls the getAllMovies function
+   * @returns Returns the object holding information on all movies
+   */
   getMovies(): void {
     // Once response is received the variable movies is assigned the response data
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
@@ -82,6 +93,10 @@ export class ProfilePageComponent implements OnInit {
     // return this.movies;
   }
 
+  /**
+   * @params movie
+   * @returns Returns boolean value on whether user in local storage contains movie id in their favourite films array
+   */
   isFavourited(movie: any): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     // console.log('FavouriteFilms:', user.FavouriteFilms);
@@ -89,21 +104,30 @@ export class ProfilePageComponent implements OnInit {
     return user.FavouriteFilms.includes(movie._id);
   }
 
-  // Function adds movie to favourites
+  /**
+   * @param movie
+   * @returns Calls the addFavourite movie function
+   */
   favouriteMovie(movie: any): void {
     this.fetchApiData.addFavourite(movie).subscribe((response) => {
       console.log(response);
     });
   }
 
-  // Function removes movie from favourites
+  /**
+   * @param movie
+   * @returns Calls the removeFavourite movie function
+   */
   removeFavourite(movie: any): void {
     this.fetchApiData.removeFavourite(movie._id).subscribe((response) => {
       console.log(response);
     });
   }
 
-  // Function get director details
+  /**
+   * @param movie
+   * @returns Calls the getMovie function
+   */
   getDirector(movie: any): void {
     this.fetchApiData.getMovie('goldeneye').subscribe((resp: any) => {});
 
@@ -116,7 +140,10 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-  // Function get director details
+  /**
+   * @param movie
+   * @returns Calls the getActor function
+   */
   getActor(movie: any): void {
     this.dialog.open(ActorDetailsComponent, {
       data: {
@@ -127,7 +154,10 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-  // Function get movie details
+  /**
+   * @param movie
+   * @returns Opens dialog showing movie details
+   */
   getMovie(movie: any): void {
     this.dialog.open(MovieDetailsComponent, {
       data: {
