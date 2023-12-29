@@ -46,12 +46,16 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // Function to open the profile page
+  /**
+   * @returns navigates to profile page
+   */
   openProfile(): void {
     this.router.navigate(['profile']);
   }
 
-  // Logs user out
+  /**
+   * @returns navigates to welcome page
+   */
   logOut(): void {
     this.router.navigate(['welcome']);
   }
