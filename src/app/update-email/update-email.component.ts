@@ -31,12 +31,19 @@ export class UpdateEmailComponent {
     public router: Router
   ) {}
 
-  // Fuction will send forms inputs to the backend
+  /**
+   * Sends updated email to the update user information endpoint
+   * @params emailUpdate
+   * @returns Console logs endpoint response
+   * @returns Updates local storage user with endpoint response
+   * @returns Closes the login form dialog
+   * @returns Shows a message of success
+   * @returns Navigates to the profile page
+   */
   updateEmail(): void {
     const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
 
     if (this.email.Email === this.confirmEmail.ConfirmEmail) {
-      console.log('matching');
       let emailUpdate: {
         Username: string;
         Password: string;
