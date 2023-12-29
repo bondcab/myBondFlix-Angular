@@ -31,13 +31,21 @@ export class UpdateDobComponent {
     public router: Router
   ) {}
 
-  // Fuction will send forms inputs to the backend
+  /**
+   * Sends updated date of birth to the update user information endpoint
+   * @params dobUpdate
+   * @returns Console logs endpoint response
+   * @returns Updates local storage user with endpoint response
+   * @returns Closes the login form dialog
+   * @returns Shows a message of success
+   * @returns Navigates to the profile page
+   */
   updateDOB(): void {
     const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
     console.log('Password: ', storedUser.Password);
 
     console.log('matching');
-    let usernameUpdate: {
+    let dobUpdate: {
       Username: string;
       Password: string;
       Email: string;
@@ -48,9 +56,9 @@ export class UpdateDobComponent {
       Email: storedUser.Email,
       DOB: this.dob.date,
     };
-    console.log('Username update object', usernameUpdate);
+    console.log('Username update object', dobUpdate);
 
-    this.fetchApiData.userDOBUpdate(usernameUpdate).subscribe(
+    this.fetchApiData.userDOBUpdate(dobUpdate).subscribe(
       (response) => {
         console.log(response);
         // Takes the response from the endpoint and stores user and token in the browsers local storage
