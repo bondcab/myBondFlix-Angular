@@ -29,11 +29,17 @@ export class UserLoginFormComponent {
     public router: Router
   ) {}
 
-  // Fuction will send forms inputs to the backend
+  /**
+   * Calls the userLogin function passing the data submitted in the login form component
+   * @returns Sets the user response object in local storage
+   * @returns Sets the token response in local storage
+   * @returns Closes the login form dialog
+   * @returns Shows a message of success
+   * @returns Navigates to the homepage
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (response) => {
-        console.log('DOB Change Response ', response);
         // Takes the response from the endpoint and stores user and token in the browsers local storage
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
