@@ -1,6 +1,33 @@
-# MyBondFlixAngularClient
+# myBondFlix App - Angular
+
+A web app to find information on all current James Bond films
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
+
+## Techologies Used
+
+HTML, CSS, JavaScript, Angular, Angular Material, Typescript
+
+## Installing Dependencies
+
+1. Install the latest version of Node.js
+2. Run:
+
+```bash
+npm install
+```
+
+## Usage
+
+1. Sign up - Simply choose Signup and enter you information
+
+2. Log In - Once signed up login with username and password
+
+3. Favourite Film - To favourite a movie, click on the click the heart icon on the mainpage or inside the dialog which opens once you click on a movie card
+
+4. Update Information - To update your information click on the profile link in the navigation bar and choose 'Update Information'. You can your email, username and date of birth seperately
+
+5. Delete Account - To delete account click 'delete account' inside the profile page. A popup will appear asking you to confirm
 
 ## Development server
 
